@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:54:19 by ialves-m          #+#    #+#             */
-/*   Updated: 2024/02/22 10:57:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:56:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ template<typename T>
 Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {};
 
 template<typename T>
-Array<T>::~Array() {};
+Array<T>::~Array()
+{
+	delete[] this->_array;
+};
 
 template<typename T>
 Array<T>::Array(const Array& original) : _array(new T[original._size]), _size(original._size) 
 {
-	for (int i = 0; i < original._size; i++)
+	for (int i = 0; i < (int)original._size; i++)
 		this->_array[i] = original._array[i];
 };
 
